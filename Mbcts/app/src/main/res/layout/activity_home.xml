@@ -4,6 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".HomeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile Based Child Tracking Sysytem"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:background="@color/my_primary"
+            android:padding="16dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textViewHeader"
+            android:layout_marginTop="60sp"
+            android:layout_marginBottom="60sp"
+            android:layout_marginHorizontal="30sp"
+            app:cardCornerRadius="28dp"
+            android:id="@+id/card_view"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="28dp">
+
+                <TextView
+                    android:id="@+id/textLayoutHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile Based Child Tracking Sytem"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
+                    android:background="@color/my_secondary"
+                    android:padding="16dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Live Tracking"
+                    android:onClick="login"
+                    app:cornerRadius="32dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Geo Fencing"
+                    android:onClick="login"
+                    app:cornerRadius="32dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Create New Routine"
+                    android:onClick="login"
+                    app:cornerRadius="32dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Account Information"
+                    android:onClick="login"
+                    app:cornerRadius="32dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Logout"
+                    android:onClick="logout"
+                    app:cornerRadius="32dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
