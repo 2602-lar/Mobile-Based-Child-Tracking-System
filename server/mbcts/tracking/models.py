@@ -1,9 +1,9 @@
 from django.db import models
-from ..useroperations.models import *
+from useroperations.models import *
 
 # Create your models here.
 class incident(models.Model):
-    child_id = models.ForeignKey(children,on_delete=models.CASCADE,  null=True)
+    child_id = models.ForeignKey(children,on_delete=models.CASCADE)
     time_stamp = models.DateTimeField( auto_now=True, auto_now_add=False)
     Location = models.CharField(max_length=255)
     
@@ -38,9 +38,11 @@ class routine(models.Model):
     
 class account_status(models.Model):
     child_id = models.ForeignKey(children,on_delete=models.CASCADE,  null=True)
-    parent_id = models.ForeignKey(guardians, on_delete=models.CASCADE, null = True)
+    guardian_id = models.ForeignKey(guardians, on_delete=models.CASCADE, null = True)
     live_location = models.CharField(max_length=255)
-    Geo_fenced = models.CharField(max_length=255)
+    Geo_fenced = models.CharField(max_length=255, null=True)
     routine_training = models.CharField(max_length=255)
     panic = models.BooleanField()
     routine = models.ForeignKey(routine, on_delete=models.SET_NULL, null = True)
+    battery = models.CharField(max_length=255)
+    last_update = models.DateTimeField()

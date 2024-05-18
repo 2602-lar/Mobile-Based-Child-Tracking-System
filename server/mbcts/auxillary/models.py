@@ -1,5 +1,5 @@
 from django.db import models
-from ..useroperations.models import *
+from useroperations.models import *
 
 # Create your models here.
 class safety_tip(models.Model):
@@ -20,9 +20,9 @@ class quiz(models.Model):
     attempts = models.IntegerField()
     correct_attempts = models.IntegerField()
     
-class gaming_stats(models.Mode):
-    child_id = models.ForeignKey(children, on_delete=models.CASCADE, null=True)
+class gaming_stats(models.Model):
+    child_id = models.ForeignKey(children, on_delete=models.CASCADE)
     max_age = models.IntegerField()
     min_age = models.IntegerField()
-    game = models.CharField(100)
+    game = models.CharField(max_length = 100)
     wins = models.IntegerField

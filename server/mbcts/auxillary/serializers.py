@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import *
-from ..useroperations.serializers import ChildrenSerializer
+from useroperations.serializers import ChildrenSerializer
         
 class Safety_tipSerializer(serializers.ModelSerializer) :
     

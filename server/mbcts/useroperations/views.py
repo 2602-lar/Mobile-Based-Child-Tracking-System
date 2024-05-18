@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .auxillary import *
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseBadRequest
+from tracking import serializers
 
 # CRUD for guardians
 class GuardianViewSet(viewsets.ModelViewSet):
@@ -113,7 +114,7 @@ class ChildrenGuardiansViewSet(viewsets.ModelViewSet):
 @csrf_exempt
 def creating_parent(request):
     data = dict(request.data)
-    guardian_id = generate_id(guardians, 'GUARD')
+    guardian_id = generate_id(guardians, 'G')
     create_guardian = PruneGuardiansSerializer( data = {
             'guardian_id' : guardian_id,
             'firstname' : data['name'][0],
@@ -136,7 +137,7 @@ def creating_parent(request):
 def creating_child(request):
     data = dict(request.data)
     print(data)
-    child_id = generate_id(children, 'CHILD')
+    child_id = generate_id(children, 'CH')
     create_child = ChildrenSerializer(data = {
         'child_id' : child_id,
         'firstname' : data['firstname'][0],
@@ -148,9 +149,16 @@ def creating_child(request):
     if create_child.is_valid():
         print('saving child : ', child_id)
         create_child.save()
-        relationship = Prune_ChildrenGuardianSerializer(data = {
+        relationship = serializers.PruneAccount_StatusSerializer(data = {
             'child_id' : child_id,
-            'guardian_id' : data['guardian_id'][0]
+            'guardian_id' : data['guardian_id'][0],
+            'live_location' : 'chdib',
+            'Geo_fenced' : 'ydibibibufwi',
+            'routine_training' : 'gvfyrufeie',
+            'panic' :  False,
+            'routine' : None,
+            'battery' : "40%",
+            'last_update' : datetime.now()
         })
         if relationship.is_valid():
             print('saving relationship : ', child_id , ' guardian_id : ', data['guardian_id'][0])

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import *
-from ..useroperations.serializers import ChildrenSerializer, PruneGuardiansSerializer
+from useroperations.serializers import ChildrenSerializer, PruneGuardiansSerializer
 from django.contrib.auth.models import User
 
 class IncidentSerializer(serializers.ModelSerializer) :
@@ -36,7 +36,7 @@ class Account_StatusSerializer(serializers.ModelSerializer) :
         model = account_status
         fields = '__all__'
         
-class PruneIncidentSerializer(serializers.ModelSerializer) :
+class PruneAccount_StatusSerializer(serializers.ModelSerializer) :
     
     class Meta:
         model = account_status
