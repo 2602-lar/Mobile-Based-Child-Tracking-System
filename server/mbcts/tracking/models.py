@@ -4,6 +4,7 @@ from useroperations.models import *
 # Create your models here.
 class incident(models.Model):
     child_id = models.ForeignKey(children,on_delete=models.CASCADE)
+    incident_type = models.CharField(max_length=255, null=True)
     time_stamp = models.DateTimeField( auto_now=True, auto_now_add=False)
     Location = models.CharField(max_length=255)
     
@@ -41,6 +42,7 @@ class account_status(models.Model):
     guardian_id = models.ForeignKey(guardians, on_delete=models.CASCADE, null = True)
     live_location = models.CharField(max_length=255)
     Geo_fenced = models.CharField(max_length=255, null=True)
+    Geo_fenced_status = models.CharField(max_length=255, null = True)
     Geo_fence_distance = models.CharField(max_length=255, null=True)
     routine_training = models.CharField(max_length=255)
     panic = models.BooleanField()

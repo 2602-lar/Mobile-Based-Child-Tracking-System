@@ -10,7 +10,8 @@ from django.views.decorators.csrf import csrf_exempt
 from .auxillary import *
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseBadRequest,  JsonResponse
-from tracking import serializers
+from tracking.serializers import *
+from tracking.models import *
 
 # CRUD for guardians
 class GuardianViewSet(viewsets.ModelViewSet):
@@ -206,12 +207,14 @@ def verify_identity_of_child(request):
     print(data)
     child_id = data['child_id'][0]
     guardian_id = data['guardian_id'][0]
-    relationship = guardian_child_relationship.objects.filter(child_id = child_id, guardian_id = guardian_id)
-    serializer = Prune_ChildrenGuardianSerializer(relationship, many = True)
-    print(serializer.data[0])
+    relationship = account_status.objects.filter(child_id = child_id, guardian_id = guardian_id)
+    serializer = PruneAccount_StatusSerializer(relationship, many = True)
     if len(serializer.data) == 0:
         return Response({'message' : 'Incorrect Child Id ! Child not found'})
     else:
-        return JsonResponse(serializer.data[0], safe= False)
+        guardian_id = serializer.data[0]['guardian_id']
+        child_id = serializer.data[0]['child_id']
+        return_data = {'child_id' : child_id, 'guardian_id' : guardian_id}
+        return JsonResponse(return_data, safe= False)
 
          

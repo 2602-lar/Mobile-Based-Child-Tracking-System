@@ -19,5 +19,8 @@ public interface Methods {
     @POST("auxillary/home-tip/")
     Call<ChildSetup> HomeTip(@Field("child_id")String child_id);
 
-
+    @FormUrlEncoded
+    @POST("tracking/live-location/")
+    Call<LocationData> liveLocation(@Field("child_id")String child_id, @Field("latitude")double latitude,
+                                    @Field("longitude")double longitude);
 }
