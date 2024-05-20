@@ -14,5 +14,6 @@ urlpatterns = [
     path('users/', views.UserViewSet.users, name = 'users'),
     path('guardians/', views.creating_parent, name = 'guadians'),
     path('children/', views.creating_child, name = 'children'),
-    path('create-application-user/', views.creating_application_user, name ='create-application-user')
+    path('create-application-user/', views.creating_application_user, name ='create-application-user'),
+    path('verify-child/', views.verify_identity_of_child, name = 'verify-child')
 ]

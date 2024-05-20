@@ -6,4 +6,109 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgroundchild">
+
+        <TextView
+            android:id="@+id/textViewHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile Based Child Tracking Sysytem : Child"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:background="@color/my_primary"
+            android:padding="16dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textViewHeader"
+            android:layout_marginTop="60sp"
+            android:layout_marginBottom="60sp"
+            android:layout_marginHorizontal="30sp"
+            app:cardCornerRadius="28dp"
+            android:id="@+id/card_view"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="28dp">
+
+                <TextView
+                    android:id="@+id/textLayoutHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile Based Child Tracking Sytem"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
+                    android:background="@color/my_secondary"
+                    android:padding="16dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Tic-Tac-Toe"
+                    android:onClick="playTicTacToe"
+                    app:cornerRadius="32dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Quiz"
+                    android:onClick="login"
+                    app:cornerRadius="32dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Game leaderBoard"
+                    android:onClick="login"
+                    app:cornerRadius="32dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Exit"
+                    android:onClick="login"
+                    app:cornerRadius="32dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    >
+                    <TextView
+                        android:id="@+id/txt_safety_tip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Safety Tip"
+                        android:textSize="18dp"
+                        android:gravity="center"
+                        android:textColor="#00FF00"
+                        android:paddingBottom="40dp"
+                        />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_below="@id/txt_safety_tip"
+                        android:text="Panic"
+                        android:onClick="Panic"
+                        android:textSize="18dp"
+                        android:backgroundTint="@android:color/holo_red_dark"
+                        android:textColor="#FFFFFF"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

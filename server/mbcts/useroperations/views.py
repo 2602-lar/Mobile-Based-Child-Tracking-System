@@ -9,7 +9,7 @@ from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 from .auxillary import *
 from django.contrib.auth.hashers import make_password
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponseBadRequest,  JsonResponse
 from tracking import serializers
 
 # CRUD for guardians
@@ -198,3 +198,20 @@ def creating_application_user(request):
          return Response({'message' : 'User Successfully created'})
     else:
         return HttpResponseBadRequest({'message' : 'error saving user!'})
+    
+@api_view(['POST'])
+@csrf_exempt
+def verify_identity_of_child(request):
+    data = dict(request.data)
+    print(data)
+    child_id = data['child_id'][0]
+    guardian_id = data['guardian_id'][0]
+    relationship = guardian_child_relationship.objects.filter(child_id = child_id, guardian_id = guardian_id)
+    serializer = Prune_ChildrenGuardianSerializer(relationship, many = True)
+    print(serializer.data[0])
+    if len(serializer.data) == 0:
+        return Response({'message' : 'Incorrect Child Id ! Child not found'})
+    else:
+        return JsonResponse(serializer.data[0], safe= False)
+
+         

@@ -41,6 +41,7 @@ class account_status(models.Model):
     guardian_id = models.ForeignKey(guardians, on_delete=models.CASCADE, null = True)
     live_location = models.CharField(max_length=255)
     Geo_fenced = models.CharField(max_length=255, null=True)
+    Geo_fence_distance = models.CharField(max_length=255, null=True)
     routine_training = models.CharField(max_length=255)
     panic = models.BooleanField()
     routine = models.ForeignKey(routine, on_delete=models.SET_NULL, null = True)
