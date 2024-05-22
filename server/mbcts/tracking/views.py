@@ -53,7 +53,6 @@ def live_location_parent(request):
     location = serializer.data[0]['live_location']
     json_string = location.replace("'", "\"")
     location = json.loads(json_string)
-    print(location['longitude'])
     return Response({'longitude' : str(location['longitude']), 'latitude' : str(location['latitude'])})
 
 @api_view(['POST'])
@@ -69,7 +68,7 @@ def submit_distance(request):
         status.Geo_fenced = "True"
         status.save()
     except:
-        print("error saving data")
+        res = "not saved"
     return Response({"received" : "request"})
 
 @api_view(['POST'])
