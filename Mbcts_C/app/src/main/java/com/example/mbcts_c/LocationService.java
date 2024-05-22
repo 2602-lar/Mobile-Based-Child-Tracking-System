@@ -37,7 +37,7 @@ import retrofit2.Response;
 
 public class LocationService extends Service {
     private static final String CHANNEL_ID = "LocationServiceChannel";
-    private static final int INTERVAL = 10000; // 10 seconds
+    private static final int INTERVAL = 0000; // 10 seconds
     private Handler handler = new Handler();
     private Runnable runnable;
 
@@ -48,8 +48,8 @@ public class LocationService extends Service {
         super.onCreate();
         createNotificationChannel();
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Location Service")
-                .setContentText("Running in the background")
+                .setContentTitle("Child : Panic")
+                .setContentText("Your child has pressed the panic button something is wrong!.")
                 .setSmallIcon(R.drawable.ic_notification)
                 .build();
         startForeground(1, notification);

@@ -217,4 +217,12 @@ def verify_identity_of_child(request):
         return_data = {'child_id' : child_id, 'guardian_id' : guardian_id}
         return JsonResponse(return_data, safe= False)
 
-         
+
+@api_view(['POST'])
+@csrf_exempt
+def emergency_contacts(request):
+    data = dict(request.data)
+    guardian_id = data['guardian_id'][0]
+    account = guardians.objects.filter(guardian_id = guardian_id)
+    serializer = PruneGuardiansSerializer(status, many = True)
+    return JsonResponse(serializer.data, safe= False)

@@ -12,6 +12,7 @@ from django.http import HttpResponseBadRequest,  JsonResponse
 import random
 
 # Create your views here.
+# retrieving safety tips
 @api_view(['POST'])
 @csrf_exempt
 def home_tip(request):
@@ -22,3 +23,14 @@ def home_tip(request):
     serializer = Safety_tipSerializer(tip, many = True)
     return Response({'tip' : serializer.data[0]['tip']})
     
+# Create your views here
+# retrieving quiz.
+@api_view(['POST'])
+@csrf_exempt
+def quiz_req(request):
+    data = dict(request.data)
+    count = quiz.objects.all().count()
+    quiz_id = random.choice(range(1, count))
+    quiz = quiz.objects.filter(id = quiz_id)
+    serializer = QuizSerializer(quiz, many = True)
+    return Response({'quiz' : serializer.data[0]})

@@ -41,7 +41,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //additional dependencies
+    implementation("com.mapbox.maps:android:11.3.1")
     implementation("com.google.android.gms:play-services-location:21.1.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
 }

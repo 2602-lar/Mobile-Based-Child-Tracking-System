@@ -52,28 +52,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:text="Live Tracking"
-                    android:onClick="login"
+                    android:onClick="LiveTracking"
                     app:cornerRadius="32dp"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:text="Geo Fencing"
-                    android:onClick="login"
+                    android:onClick="GeoFence"
                     app:cornerRadius="32dp"/>
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_routine"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:text="Create New Routine"
-                    android:onClick="login"
+                    android:onClick="Routine"
                     app:cornerRadius="32dp"/>
 
                 <com.google.android.material.button.MaterialButton
+
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:text="Account Information"
-                    android:onClick="login"
+                    android:onClick="Routine"
                     app:cornerRadius="32dp"/>
 
                 <com.google.android.material.button.MaterialButton

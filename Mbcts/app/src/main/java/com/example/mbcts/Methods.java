@@ -34,4 +34,16 @@ public interface Methods {
     Call<User> SubmitUser(
             @Field("username") String username, @Field("password") String password
     );
+
+    @FormUrlEncoded
+    @POST("tracking/live-location-parent")
+    Call<User> LiveLocation(
+            @Field("guardian_id") String username
+    );
+
+    @FormUrlEncoded
+    @POST("tracking/submit-distance/")
+    Call<User> SubmitGeoLock(
+            @Field("guardian_id") String username, @Field("distance") Double distance
+    );
 }

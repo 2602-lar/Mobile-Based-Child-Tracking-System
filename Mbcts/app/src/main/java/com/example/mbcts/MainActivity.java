@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<Model>() {
             @Override
             public void onResponse(Call<Model> call, Response<Model> response) {
-                Toast.makeText(MainActivity.this,response.toString(),Toast.LENGTH_SHORT).show();
                 login_success(username);
             }
 
