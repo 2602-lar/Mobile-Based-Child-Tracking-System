@@ -21,12 +21,10 @@ class GuardianViewSet(viewsets.ModelViewSet):
     
     def retreive(self, request, pk=None):
          item = get_object_or_404(self.queryset, audited_id=pk)
-         print(item)
          serializer = GuardiansSerializer(item)
          return Response(serializer.data)
 
     def perform_create(self, serializer):
-        print(self.data)
         id = generate_id(guardians, 'GUA')
         serializer.save(guardian_id = id)
 
@@ -46,7 +44,6 @@ class ChildrenViewSet(viewsets.ModelViewSet):
     
     def retreive(self, request, pk=None):
          item = get_object_or_404(self.queryset, audited_id=pk)
-         print(item)
          serializer = ChildrenSerializer(item)
          return Response(serializer.data)
 
@@ -96,7 +93,6 @@ class ChildrenGuardiansViewSet(viewsets.ModelViewSet):
     
     def retreive(self, request, pk=None):
          item = get_object_or_404(self.queryset, audited_id=pk)
-         print(item)
          serializer = ChildrenGuardianSerializer(item)
          return Response(serializer.data)
 
@@ -128,7 +124,6 @@ def creating_parent(request):
     })
     if create_guardian.is_valid() :
         create_guardian.save()
-        print('created ', guardian_id)
         return Response({'guardian_id' : guardian_id})
     else:
         return HttpResponseBadRequest({'message' : 'error'})
@@ -137,7 +132,6 @@ def creating_parent(request):
 @csrf_exempt
 def creating_child(request):
     data = dict(request.data)
-    print(data)
     child_id = generate_id(children, 'CH')
     create_child = ChildrenSerializer(data = {
         'child_id' : child_id,
@@ -148,7 +142,6 @@ def creating_child(request):
         'number_of_guardians' : data['number_of_guardians'][0]
     })
     if create_child.is_valid():
-        print('saving child : ', child_id)
         create_child.save()
         relationship = serializers.PruneAccount_StatusSerializer(data = {
             'child_id' : child_id,
@@ -162,7 +155,6 @@ def creating_child(request):
             'last_update' : datetime.now()
         })
         if relationship.is_valid():
-            print('saving relationship : ', child_id , ' guardian_id : ', data['guardian_id'][0])
             relationship.save()
             return Response({'guardian_id' : data['guardian_id'][0], 'child_id' : child_id})
         else:
@@ -174,7 +166,6 @@ def creating_child(request):
 @csrf_exempt
 def creating_application_user(request):
     data = dict(request.data)
-    print(data)
     create_user = Create_UserSerializer(data = {
                 'username' : data['username'][0],
                 'password' : make_password(data['password'][0]),
@@ -189,7 +180,6 @@ def creating_application_user(request):
                 "user_permissions": []
     })
     if create_user.is_valid():
-         print('creating user')
          create_user.save()
          guardian_id = data['username'][0]
          guardian = guardians.objects.get(guardian_id = guardian_id)
@@ -204,7 +194,6 @@ def creating_application_user(request):
 @csrf_exempt
 def verify_identity_of_child(request):
     data = dict(request.data)
-    print(data)
     child_id = data['child_id'][0]
     guardian_id = data['guardian_id'][0]
     relationship = account_status.objects.filter(child_id = child_id, guardian_id = guardian_id)
